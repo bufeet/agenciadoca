@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência Doca | Transformamos Marcas em Referências Digitais</title>
+    <meta name="description" content="Há 15+ anos impulsionando negócios com estratégias de comunicação e tecnologia. Especialistas em Branding, Tráfego Pago e Web Design em Paulínia, Campinas e todo o Brasil.">
+    
+    <!--Favicons-->
+    <link rel="shortcut icon" href="./images/logotipo.png" type="image/png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Agência Doca | Referência em Marketing Digital">
+    <meta property="og:description" content="Estratégias que geram resultados reais. Conheça a agência especialista em transformar a experiência do seu cliente.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#000000',
+                            charcoal: '#0a0a0a',
+                            charcoalLight: '#1a1a1a',
+                            magenta: '#FF0066',
+                            magentaHover: '#FF1A75',
+                            white: '#FFFFFF',
+                            gray: '#f5f5f5',
+                            gold: '#FFD700',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #FF006633 0deg, #000000 180deg, #FF006633 360deg)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --magenta: #FF0066;
+            --black: #000000;
+        }
+
+        body {
+            background-color: var(--black);
+            color: #f5f5f5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--magenta); 
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #FFFFFF, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-magenta {
+            background: linear-gradient(135deg, #FF0066, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism & Cards */
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 102, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(255, 0, 102, 0.2);
+        }
+
+        .service-card:hover::before {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(255,0,102,0.2) 100%);
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Outline Button Animation */
+        .btn-outline {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-outline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: -2;
+        }
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--magenta);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        .btn-outline:hover::before {
+            width: 100%;
+        }
+        .btn-outline:hover {
+            color: #ffffff !important;
+            border-color: var(--magenta) !important;
+        }
+
+        /* GSAP Initial States */
+        .reveal-up { opacity: 0; transform: translateY(40px); }
+        .reveal-scale { opacity: 0; transform: scale(0.95); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); }
+        .reveal-right { opacity: 0; transform: translateX(40px); }
+
+        /* Noise Overlay for Texture */
+        .noise-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Bullet for differentials */
+        .custom-check {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .custom-check::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--magenta);
+            font-size: 1.1rem;
+        }
+
+        /* Loading Screen & Dot Grid */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .loading-logo span {
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: pulse-letter 1.5s infinite alternate ease-in-out;
+        }
+        
+        .loading-logo span:nth-child(1) { animation-delay: 0.1s; }
+        .loading-logo span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-logo span:nth-child(3) { animation-delay: 0.3s; }
+        .loading-logo span:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes pulse-letter {
+            0% { opacity: 0.5; transform: scale(0.8); color: #fff; }
+            100% { opacity: 1; transform: scale(1.1); color: var(--magenta); text-shadow: 0 0 15px rgba(255,0,102,0.6); }
+        }
+
+        .dot-grid-bg {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.25) 2px, transparent 2px);
+            background-size: 25px 25px;
+        }
+
+        /* TAREFA 1: Botões estáticos em Mobile/Tablet (max-width: 1024px) */
+        @media (max-width: 1024px) {
+            .btn-outline, 
+            a[href^="https://wa.me/"]:not(#floating-whatsapp):not(#cta-final-btn) {
+                color: #ffffff !important;
+                border-color: var(--magenta) !important;
+            }
+            .btn-outline::before, .btn-outline::after {
+                display: none !important;
+            }
+        }
+
+        /* TAREFAS 2 E 3: Exceções de Cores Absolutas */
+        #floating-whatsapp {
+            background-color: #25D366 !important;
+        }
+        
+        #cta-final-btn {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        #cta-final-btn:hover {
+            background-color: #1a1a1a !important; /* charcoal */
+            color: #ffffff !important;
+        }
+
+        /* TAREFA 3: Cases de Sucesso (Texto permanentemente visível em mobile) */
+        @media (max-width: 1024px) {
+            #cases .group .opacity-0 {
+                opacity: 1 !important;
+            }
+            #cases .group .translate-y-4 {
+                transform: translateY(0) !important;
+            }
+            /* Reforço no gradiente escuro para garantir legibilidade */
+            #cases .group .absolute.inset-0.bg-gradient-to-t {
+                opacity: 0.95 !important;
+                background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, transparent 100%) !important;
+            }
+        }
+
+        /* TAREFA 4: Cursor Customizado Adaptativo (Apenas Desktop) */
+        @media (min-width: 1025px) {
+            body, a, button, input, select, textarea, .cursor-pointer {
+                cursor: none !important;
+            }
+        }
+        #custom-cursor-dot, #custom-cursor-ring {
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 999999;
+            mix-blend-mode: difference;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #custom-cursor-dot {
+            width: 8px; height: 8px;
+            background-color: white;
+            transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #custom-cursor-ring {
+            width: 36px; height: 36px;
+            border: 1px solid white;
+            transition: width 0.2s, height 0.2s;
+        }
+        /* Classe ativada via JS no hover */
+        .cursor-hover #custom-cursor-dot {
+            width: 18px; height: 18px;
+        }
+        .cursor-hover #custom-cursor-ring {
+            width: 45px; height: 45px;
+            opacity: 0.5;
+        }
+
+        /* TAREFA 2: Utilitários para o Carrossel Mobile de Depoimentos */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .dot-indicator { transition: all 0.3s ease; }
+        .dot-indicator.active { background-color: var(--magenta); width: 24px; }
+        
+        /* TAREFA 1 (V5): Bloqueio de Scroll do Body */
+        .no-scroll {
+            overflow: hidden !important;
+            height: 100vh;
+        }
+
+        /* TAREFA 2 (V5): Ajuste Refinado do Título Hero para Telas Super Pequenas */
+        @media (max-width: 380px) {
+            .hero-title-responsive {
+                font-size: clamp(1.75rem, 9vw, 2.5rem) !important;
+                line-height: 1.1 !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-magenta selection:text-white">
+
+    <!-- TAREFA 4: Elementos do Cursor -->
+    <div id="custom-cursor-dot" class="hidden lg:block"></div>
+    <div id="custom-cursor-ring" class="hidden lg:block"></div>
+
+    <!-- Tela de Carregamento (Loading Screen) -->
+    <div id="loading-screen">
+        <div class="loading-logo font-heading font-black text-5xl md:text-7xl tracking-tighter">
+            <span>D</span><span>O</span><span>C</span><span>A</span>
+        </div>
+    </div>
+
+    <div class="noise-bg"></div>
+
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 border-b border-transparent">
+        <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#" class="relative z-10 flex items-center gap-2">
+                <!-- Using a typographic logo approach since raw image isn't available, keeping it premium -->
+                <span class="font-heading font-black text-2xl tracking-tighter text-white">
+                    AGÊNCIA<span class="text-brand-magenta">DOCA</span><span class="text-brand-gold text-sm ml-1">+</span>
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 font-sans text-sm font-medium tracking-wide">
+                <a href="#servicos" class="text-gray-300 hover:text-brand-magenta transition-colors">Serviços</a>
+                <a href="#diferenciais" class="text-gray-300 hover:text-brand-magenta transition-colors">Por que Nós</a>
+                <a href="#cases" class="text-gray-300 hover:text-brand-magenta transition-colors">Cases</a>
+                <a href="#metodologia" class="text-gray-300 hover:text-brand-magenta transition-colors">Metodologia</a>
+                <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto.%20Podem%20me%20ajudar?" target="_blank" rel="noopener noreferrer" class="bg-brand-magenta text-white px-6 py-2.5 rounded-full hover:bg-brand-magentaHover transition-all hover:shadow-[0_0_20px_rgba(255,0,102,0.4)]">
+                    Falar com Especialista
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl z-10 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[100dvh] bg-brand-black z-[9999] flex flex-col justify-center items-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300">
+            <!-- TAREFA 1 (V5): Botão de fechar (X) -->
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white text-4xl p-2 focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <a href="#servicos" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-magenta">Serviços</a>
+            <a href="#diferenciais" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-magenta">Por que Nós</a>
+            <a href="#cases" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-magenta">Cases</a>
+            <a href="#metodologia" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-magenta">Metodologia</a>
+            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto.%20Podem%20me%20ajudar?" target="_blank" rel="noopener noreferrer" class="mobile-link mt-4 bg-brand-magenta text-white px-8 py-3 rounded-full font-bold">Falar com Especialista</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-brand-black">
+            <!-- Background Elements -->
+            <!-- TAREFA 7: Efeito Parallax e Líquido -->
+            <div id="hero-bg-parallax" class="absolute inset-0 z-0 will-change-transform">
+                <canvas id="liquid-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-70 mix-blend-screen"></canvas>
+                <div class="absolute inset-0 bg-hero-glow opacity-30 animate-[spin_60s_linear_infinite]"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-black/80 to-brand-black pointer-events-none"></div>
+                <!-- Optional: Image background placeholder matching the prompt's gradient suggestion -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-magenta/10 rounded-full blur-[120px] pointer-events-none"></div>
+            </div>
+
+            <div class="container mx-auto px-6 lg:px-12 relative z-10 pointer-events-auto">
+                <div class="max-w-5xl">
+                    <div class="reveal-up inline-block border border-brand-white/10 bg-brand-white/5 backdrop-blur-md rounded-full px-4 py-1.5 mb-6">
+                        <span class="text-xs font-bold tracking-widest text-brand-gray uppercase flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-brand-magenta animate-pulse"></span>
+                            Especialistas em Paulínia e Campinas | Atuação Nacional
+                        </span>
+                    </div>
+                    
+                    <!-- TAREFA 2 (V5): Título com Tipografia Fluida (Clamp) -->
+                    <h1 class="reveal-up hero-title-responsive font-heading font-black text-[clamp(2.25rem,7vw,5.5rem)] leading-[1.05] tracking-tighter mb-6 uppercase text-white w-full px-2 sm:px-0">
+                        Transformamos marcas em <br class="hidden md:block"/>
+                        <span class="text-gradient-magenta relative inline-block">
+                            referências digitais
+                            <!-- Decorative line -->
+                            <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 10C50 2 150 -2 298 10" stroke="#FF0066" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </h1>
+                    
+                    <p class="reveal-up text-lg md:text-xl text-brand-gray/80 font-light max-w-2xl mb-10 leading-relaxed">
+                        15+ anos impulsionando negócios com estratégias que geram resultados reais. Integração perfeita entre tecnologia de ponta e comunicação que converte.
+                    </p>
+                    
+                    <div class="reveal-up flex flex-col sm:flex-row items-center gap-4">
+                        <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20impulsionar%20minha%20marca.%20Gostaria%20de%20agendar%20uma%20conversa!" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-brand-magenta text-white px-8 py-4 rounded-full font-bold tracking-wide hover:bg-brand-magentaHover transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,0,102,0.3)] text-center flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            QUERO IMPULSIONAR MINHA MARCA
+                        </a>
+                        <a href="#cases" class="btn-outline w-full sm:w-auto border border-white/20 text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all text-center">
+                            CONHEÇA NOSSOS CASES
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+                <span class="text-[10px] uppercase tracking-widest text-white">Scroll</span>
+                <div class="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-magenta animate-[slideDown_1.5s_ease-in-out_infinite]"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-y border-white/10 bg-brand-black py-8">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="flex flex-wrap justify-center lg:justify-between items-center gap-8 md:gap-12">
+                    <div class="reveal-up flex flex-col items-center lg:items-start">
+                        <span class="text-3xl font-heading font-black text-white">500+</span>
+                        <span class="text-sm font-sans text-brand-gray/60 uppercase tracking-wider">Projetos Entregues</span>
+                    </div>
+                    <div class="hidden md:block w-[1px] h-12 bg-white/10"></div>
+                    
+                    <div class="reveal-up flex flex-col items-center lg:items-start" style="transition-delay: 0.1s;">
+                        <span class="text-3xl font-heading font-black text-brand-magenta">15<span class="text-lg">ANOS</span></span>
+                        <span class="text-sm font-sans text-brand-gray/60 uppercase tracking-wider">De Experiência</span>
+                    </div>
+                    <div class="hidden md:block w-[1px] h-12 bg-white/10"></div>
+                    
+                    <div class="reveal-up flex flex-col items-center lg:items-start" style="transition-delay: 0.2s;">
+                        <span class="text-3xl font-heading font-black text-white">98%</span>
+                        <span class="text-sm font-sans text-brand-gray/60 uppercase tracking-wider">Satisfação</span>
+                    </div>
+                    <div class="hidden md:block w-[1px] h-12 bg-white/10"></div>
+                    
+                    <div class="reveal-up flex flex-col items-center lg:items-start gap-1" style="transition-delay: 0.3s;">
+                        <div class="flex text-brand-gold text-lg gap-1">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-sm font-sans text-brand-gray/60 font-medium">5.0 Avaliação Google</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="py-24 bg-gradient-to-b from-brand-black to-brand-charcoal">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brand-magenta font-bold tracking-widest uppercase text-sm mb-4 block reveal-up">Nosso Ecossistema</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6 reveal-up">SOLUÇÕES QUE GERAM <span class="text-brand-magenta">RESULTADO</span></h2>
+                    <p class="text-brand-gray/70 text-lg reveal-up">Metodologia exclusiva integrando criatividade e dados para posicionar sua marca no topo.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Service 1: Branding -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-gem"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Identidade Visual</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Criação de marcas memoráveis que transmitem valor e autoridade imediata.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Identidade%20Visual.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Social Media -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-hashtag"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Redes Sociais</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Estratégia e conteúdo de alto engajamento. Não fazemos apenas posts, criamos comunidades.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Redes%20Sociais.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Tráfego -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Tráfego Pago</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Google Ads e Meta Ads otimizados para máxima conversão e ROI rastreável.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Tr%C3%A1fego%20Pago.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Web -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Desenvolvimento Web</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Sites de altíssima performance, design premium e focados em capturar leads.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Desenvolvimento%20Web.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 5: Consultoria -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-chess-knight"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Planejamento Estratégico</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Consultoria aprofundada para estruturar o crescimento digital do seu negócio.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Planejamento%20Estrat%C3%A9gico.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 6: Audiovisual -->
+                    <div class="service-card reveal-up h-[400px] flex items-end p-8 group cursor-pointer">
+                        <div class="service-content w-full">
+                            <div class="w-12 h-12 rounded-lg bg-brand-magenta/20 backdrop-blur-md flex items-center justify-center text-brand-magenta text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">Produção Audiovisual</h3>
+                            <p class="text-brand-gray/80 font-light mb-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300">Vídeos institucionais e criativos que contam a história da sua marca com impacto.</p>
+                            <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Produ%C3%A7%C3%A3o%20Audiovisual.%20Podem%20me%20enviar%20informa%C3%A7%C3%B5es?" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-white font-medium text-sm group-hover:text-brand-magenta transition-colors">
+                                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diferenciais" class="py-24 bg-brand-black relative overflow-hidden">
+            <!-- Decorative geometry -->
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-magenta/5 to-transparent skew-x-12 translate-x-20"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    
+                    <div class="w-full lg:w-1/2 reveal-left">
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 p-2 glass-panel">
+                            <!-- TAREFA 5: Troca de Imagem da seção 'Por que escolher a Doca' -->
+                            <img src="./images/agentes-agencia-doca.png" alt="Agência Doca Estratégia" class="w-full h-auto rounded-xl object-cover aspect-square md:aspect-[4/3]" onerror="this.src='https://placehold.co/800x600/1a1a1a/FF0066?text=SUA+IMAGEM+AQUI'">
+                            
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-8 -right-4 md:-right-8 bg-brand-charcoal border border-brand-magenta p-6 rounded-xl shadow-2xl shadow-brand-magenta/20 transform rotate-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-brand-magenta text-4xl"><i class="fa-brands fa-google"></i></div>
+                                    <div>
+                                        <p class="text-white font-bold font-heading text-lg leading-tight">Especialistas em</p>
+                                        <p class="text-brand-gray/80 text-sm">Google Meu Negócio</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 reveal-right">
+                        <span class="text-brand-magenta font-bold tracking-widest uppercase text-sm mb-4 block">Vantagem Competitiva</span>
+                        <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-8">POR QUE ESCOLHER A <span class="text-brand-magenta">DOCA?</span></h2>
+                        <p class="text-brand-gray/80 text-lg mb-10 font-light leading-relaxed">
+                            Não vendemos "pacotes de posts". Entregamos inteligência de mercado estruturada para que sua empresa seja encontrada, desejada e escolhida pelo seu cliente ideal.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-4">
+                            <div class="custom-check text-white font-medium text-lg">15+ Anos de Experiência</div>
+                            <div class="custom-check text-white font-medium text-lg">Tecnologia de Ponta</div>
+                            <div class="custom-check text-white font-medium text-lg">Resultados Mensuráveis (ROI)</div>
+                            <div class="custom-check text-white font-medium text-lg">Equipe Multidisciplinar</div>
+                            <div class="custom-check text-white font-medium text-lg">Atendimento Personalizado</div>
+                            <div class="custom-check text-white font-medium text-lg">Foco em Conversão Real</div>
+                        </div>
+
+                        <div class="mt-12">
+                            <a href="#contato" class="inline-flex items-center gap-3 text-brand-magenta font-bold hover:text-white transition-colors text-lg group">
+                                Iniciar meu projeto 
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="py-24 bg-brand-charcoalLight border-y border-white/5">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl reveal-up">
+                        <span class="text-brand-magenta font-bold tracking-widest uppercase text-sm mb-4 block">Portfólio</span>
+                        <h2 class="text-4xl md:text-5xl font-heading font-black text-white">CASOS DE <span class="text-gradient-magenta">SUCESSO</span></h2>
+                    </div>
+                    <!-- TAREFA 6: Alteração do link e texto do CTA de Cases -->
+                    <a href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Gostaria%20de%20ver%20mais%20projetos%20do%20portf%C3%B3lio%20e%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="btn-outline border border-white/20 text-white px-6 py-3 rounded-full font-bold tracking-wide transition-all whitespace-nowrap reveal-up">
+                        CONSULTE NOSSOS ESPECIALISTAS
+                    </a>
+                </div>
+
+                <!-- Horizontal Scroll Container for Cases -->
+                <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide" style="scrollbar-width: none;">
+                    
+                    <!-- Case 1: NOVO (Arte & Cia) -->
+                    <div class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-center group cursor-pointer reveal-scale">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-6">
+                            <img src="./images/p-02.png" alt="Case de Sucesso Arte e Cia" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <span class="bg-brand-magenta text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">E-commerce & Branding</span>
+                                <h3 class="text-2xl font-heading font-bold text-white mb-2">Arte & Cia</h3>
+                                <p class="text-brand-gray/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Reposicionamento completo de marca e lançamento de e-commerce que resultou em 150% de aumento nas vendas online em 3 meses.</p>
+                                <div class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                    <span class="text-[10px] text-brand-gold font-bold uppercase tracking-wider bg-brand-gold/10 px-2 py-1 rounded">+150% em Vendas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 (Mantido) -->
+                    <div class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-center group cursor-pointer reveal-scale" style="transition-delay: 0.1s;">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-6">
+                            <img src="./images/p-01.png" alt="Case de Sucesso 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <span class="bg-brand-magenta text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Mídias Sociais</span>
+                                <h3 class="text-2xl font-heading font-bold text-white mb-2">Comércio Local VIP</h3>
+                                <p class="text-brand-gray/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Crescimento de +300% no engajamento e captação via Instagram.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodologia" class="py-24 bg-brand-black">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brand-magenta font-bold tracking-widest uppercase text-sm mb-4 block reveal-up">Nosso Processo</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-black text-white reveal-up">COMO ENTREGAMOS <span class="text-brand-magenta">RESULTADOS</span></h2>
+                </div>
+
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Line Desktop -->
+                    <div class="hidden md:block absolute left-1/2 top-0 w-px h-full bg-gradient-to-b from-brand-magenta via-brand-charcoal to-transparent -translate-x-1/2"></div>
+                    
+                    <!-- Steps -->
+                    <div class="space-y-12 md:space-y-0">
+                        <!-- Step 1 -->
+                        <div class="relative flex flex-col md:flex-row items-center md:justify-between group reveal-up">
+                            <div class="md:w-5/12 text-center md:text-right md:pr-8 mb-4 md:mb-0">
+                                <h4 class="text-2xl font-heading font-bold text-white mb-2 group-hover:text-brand-magenta transition-colors">Diagnóstico</h4>
+                                <p class="text-brand-gray/70 text-sm font-light">Imersão profunda no seu negócio, mercado e concorrentes para entender o cenário atual.</p>
+                            </div>
+                            <div class="absolute md:relative left-0 md:left-auto top-0 md:top-auto w-10 h-10 rounded-full border-4 border-brand-black bg-brand-magenta flex items-center justify-center text-white font-bold z-10 shadow-[0_0_15px_rgba(255,0,102,0.5)]">1</div>
+                            <div class="md:w-5/12 md:pl-8"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative flex flex-col md:flex-row items-center md:justify-between group reveal-up md:mt-[-2rem]">
+                            <div class="md:w-5/12 hidden md:block text-right pr-8"></div>
+                            <div class="absolute md:relative left-0 md:left-auto top-0 md:top-auto w-10 h-10 rounded-full border-4 border-brand-black bg-brand-charcoal border-brand-magenta flex items-center justify-center text-white font-bold z-10 group-hover:bg-brand-magenta transition-colors">2</div>
+                            <div class="md:w-5/12 text-center md:text-left pl-14 md:pl-8">
+                                <h4 class="text-2xl font-heading font-bold text-white mb-2 group-hover:text-brand-magenta transition-colors">Estratégia</h4>
+                                <p class="text-brand-gray/70 text-sm font-light">Desenvolvimento de um plano de ação tático focado nos objetivos traçados no diagnóstico.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative flex flex-col md:flex-row items-center md:justify-between group reveal-up md:mt-[-2rem]">
+                            <div class="md:w-5/12 text-center md:text-right pl-14 md:pl-0 md:pr-8 mb-4 md:mb-0">
+                                <h4 class="text-2xl font-heading font-bold text-white mb-2 group-hover:text-brand-magenta transition-colors">Execução</h4>
+                                <p class="text-brand-gray/70 text-sm font-light">Implementação ágil e criativa das soluções (Design, Ads, Web) por nossa equipe de especialistas.</p>
+                            </div>
+                            <div class="absolute md:relative left-0 md:left-auto top-0 md:top-auto w-10 h-10 rounded-full border-4 border-brand-black bg-brand-charcoal border-brand-magenta flex items-center justify-center text-white font-bold z-10 group-hover:bg-brand-magenta transition-colors">3</div>
+                            <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative flex flex-col md:flex-row items-center md:justify-between group reveal-up md:mt-[-2rem]">
+                            <div class="md:w-5/12 hidden md:block text-right pr-8"></div>
+                            <div class="absolute md:relative left-0 md:left-auto top-0 md:top-auto w-10 h-10 rounded-full border-4 border-brand-black bg-brand-charcoal border-brand-magenta flex items-center justify-center text-white font-bold z-10 group-hover:bg-brand-magenta transition-colors">4</div>
+                            <div class="md:w-5/12 text-center md:text-left pl-14 md:pl-8">
+                                <h4 class="text-2xl font-heading font-bold text-white mb-2 group-hover:text-brand-magenta transition-colors">Otimização e Resultados</h4>
+                                <p class="text-brand-gray/70 text-sm font-light">Monitoramento constante de métricas, refinamento de campanhas e entrega de relatórios transparentes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: DEPOIMENTOS -->
+        <section id="depoimentos" class="py-24 bg-gradient-to-b from-brand-charcoal to-brand-black border-y border-white/5 relative overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-magenta font-bold tracking-widest uppercase text-sm mb-4 block reveal-up">O que nossos clientes dizem</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6 reveal-up">HISTÓRIAS REAIS DE QUEM JÁ <span class="text-brand-magenta">TRANSFORMOU</span> SUA MARCA COM A GENTE</h2>
+                </div>
+
+                <!-- TAREFA 2: Carrossel Mobile e Limpeza de Cards -->
+                <div id="testimonials-track" class="flex overflow-x-auto gap-6 lg:grid lg:grid-cols-3 lg:gap-8 snap-x snap-mandatory hide-scrollbar pb-4">
+                    <!-- Depoimento 1 -->
+                    <div class="min-w-[85vw] md:min-w-[60vw] lg:min-w-0 snap-center glass-panel p-8 rounded-2xl reveal-up hover:-translate-y-2 transition-transform duration-300 relative border border-white/5 hover:border-brand-magenta/50">
+                        <i class="fa-solid fa-quote-left absolute top-6 right-6 text-4xl text-brand-magenta/20"></i>
+                        <div class="flex text-brand-gold text-sm mb-6">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray/90 font-light text-lg mb-8 leading-relaxed">"A Agência Doca transformou completamente nossa presença digital. Em 3 meses, aumentamos nossas vendas online em 150%. Equipe incrível e resultados reais!"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-magenta flex items-center justify-center text-xl font-heading font-bold text-white shadow-lg">M</div>
+                            <div>
+                                <h4 class="text-white font-bold font-heading">Maria Silva</h4>
+                                <!-- TAREFA 2A: Removido subtítulo da empresa -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 2 -->
+                    <div class="min-w-[85vw] md:min-w-[60vw] lg:min-w-0 snap-center glass-panel p-8 rounded-2xl reveal-up hover:-translate-y-2 transition-transform duration-300 relative border border-white/5 hover:border-brand-magenta/50" style="transition-delay: 0.1s;">
+                        <i class="fa-solid fa-quote-left absolute top-6 right-6 text-4xl text-brand-magenta/20"></i>
+                        <div class="flex text-brand-gold text-sm mb-6">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray/90 font-light text-lg mb-8 leading-relaxed">"Profissionalismo nota 10! Finalmente encontrei uma agência que entende de B2B e entrega o que promete. Nosso faturamento cresceu 40% com as estratégias de tráfego pago."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-charcoalLight border border-brand-magenta/30 flex items-center justify-center text-xl font-heading font-bold text-white">C</div>
+                            <div>
+                                <h4 class="text-white font-bold font-heading">Carlos Mendes</h4>
+                                <!-- TAREFA 2A: Removido subtítulo da empresa -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 3 -->
+                    <div class="min-w-[85vw] md:min-w-[60vw] lg:min-w-0 snap-center glass-panel p-8 rounded-2xl reveal-up hover:-translate-y-2 transition-transform duration-300 relative border border-white/5 hover:border-brand-magenta/50" style="transition-delay: 0.2s;">
+                        <i class="fa-solid fa-quote-left absolute top-6 right-6 text-4xl text-brand-magenta/20"></i>
+                        <div class="flex text-brand-gold text-sm mb-6">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray/90 font-light text-lg mb-8 leading-relaxed">"Minha clínica estava invisível no Google. Hoje somos referência em Paulínia! O trabalho de SEO e Google Meu Negócio foi excepcional. Super recomendo!"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-charcoalLight border border-brand-magenta/30 flex items-center justify-center text-xl font-heading font-bold text-white">A</div>
+                            <div>
+                                <h4 class="text-white font-bold font-heading">Ana Paula Rodrigues</h4>
+                                <!-- TAREFA 2A: Removido subtítulo da empresa -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAREFA 2B: Indicadores do Carrossel (Visível Apenas no Mobile e iPad) -->
+                <div class="flex justify-center gap-2 mt-6 lg:hidden" id="testimonial-dots">
+                    <button class="dot-indicator active w-3 h-3 rounded-full bg-brand-magenta" aria-label="Slide 1"></button>
+                    <button class="dot-indicator w-3 h-3 rounded-full bg-brand-gray/30" aria-label="Slide 2"></button>
+                    <button class="dot-indicator w-3 h-3 rounded-full bg-brand-gray/30" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-32 relative bg-brand-magenta overflow-hidden text-center flex items-center justify-center">
+            <!-- Background pattern: DOT GRID Adicionado -->
+            <div class="absolute inset-0 dot-grid-bg"></div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-6xl font-heading font-black text-white mb-6 uppercase tracking-tight reveal-up">
+                    Pronto para levar sua marca <br class="hidden md:block"/> ao próximo nível?
+                </h2>
+                <p class="text-white/90 text-xl font-light mb-12 max-w-2xl mx-auto reveal-up" style="transition-delay: 0.1s;">
+                    Junte-se às centenas de empresas que transformaram sua presença digital e faturamento com a Agência Doca.
+                </p>
+                <a id="cta-final-btn" href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Estou%20pronto(a)%20para%20levar%20minha%20marca%20ao%20pr%C3%B3ximo%20n%C3%ADvel.%20Vamos%20conversar?" target="_blank" rel="noopener noreferrer" class="reveal-up inline-block bg-white text-brand-black px-12 py-5 rounded-full font-heading font-bold text-lg tracking-wider hover:bg-brand-charcoal hover:text-white transition-all duration-300 shadow-2xl hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transform hover:-translate-y-2">
+                    <i class="fa-brands fa-whatsapp text-brand-magenta mr-2"></i> QUERO COMEÇAR AGORA
+                </a>
+                <p class="text-white/60 text-sm mt-6 font-medium reveal-up" style="transition-delay: 0.2s;">
+                    <i class="fa-solid fa-lock mr-1"></i> Orçamento sem compromisso. Resposta em até 2 horas.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-black pt-20 pb-10 border-t border-white/10 relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand Col -->
+                <div>
+                    <span class="font-heading font-black text-2xl tracking-tighter text-white block mb-6">
+                        AGÊNCIA<span class="text-brand-magenta">DOCA</span><span class="text-brand-gold text-sm ml-1">+</span>
+                    </span>
+                    <p class="text-brand-gray/60 font-light text-sm mb-6 leading-relaxed">
+                        Somos especialistas em transformar experiência de atendimento através da integração inteligente entre tecnologia e estratégias de comunicação.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/agenciadoca/" target="_blank" class="w-10 h-10 rounded-full bg-brand-charcoalLight flex items-center justify-center text-white hover:bg-brand-magenta transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/agenciadoca/" target="_blank" class="w-10 h-10 rounded-full bg-brand-charcoalLight flex items-center justify-center text-white hover:bg-brand-magenta transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://br.linkedin.com/company/doca-agencia" target="_blank" class="w-10 h-10 rounded-full bg-brand-charcoalLight flex items-center justify-center text-white hover:bg-brand-magenta transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Col -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-wider text-sm">Serviços</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-brand-gray/60 hover:text-brand-magenta text-sm transition-colors">Identidade Visual</a></li>
+                        <li><a href="#" class="text-brand-gray/60 hover:text-brand-magenta text-sm transition-colors">Gestão de Redes Sociais</a></li>
+                        <li><a href="#" class="text-brand-gray/60 hover:text-brand-magenta text-sm transition-colors">Tráfego Pago / Mídia</a></li>
+                        <li><a href="#" class="text-brand-gray/60 hover:text-brand-magenta text-sm transition-colors">Desenvolvimento Web</a></li>
+                        <li><a href="#" class="text-brand-gray/60 hover:text-brand-magenta text-sm transition-colors">Planejamento Estratégico</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Col -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-wider text-sm">Contato</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-brand-gray/60 text-sm">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-magenta"></i>
+                            <span>Rua Aquilina Bonatti Malavazzi, 60<br>Jardim Vista Alegre, Sala 01<br>Paulínia - SP</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-brand-gray/60 text-sm">
+                            <i class="fa-brands fa-whatsapp text-brand-magenta"></i>
+                            <a href="https://wa.me/5519994801448" class="hover:text-white transition-colors">(19) 99480-1448</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-brand-gray/60 text-sm">
+                            <i class="fa-solid fa-envelope text-brand-magenta"></i>
+                            <a href="mailto:contato@agenciadoca.com" class="hover:text-white transition-colors">contato@agenciadoca.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Col -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-wider text-sm">Expertise</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">B2B</span>
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">Google Ads</span>
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">Meta Ads</span>
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">SEO Local</span>
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">Branding</span>
+                        <span class="px-3 py-1 bg-brand-charcoalLight text-brand-gray/80 text-xs rounded-full border border-white/5">Design Premium</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-brand-gray/40 text-xs">
+                    &copy; <span id="year"></span> Agência Doca. Todos os direitos reservados.
+                </p>
+                <div class="flex gap-4 text-xs text-brand-gray/40">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a id="floating-whatsapp" href="https://wa.me/5519994801448?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform z-50 animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Loading Screen Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                // Adiciona um leve delay para exibir a animação tipográfica antes de sumir
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                }, 1500);
+            }
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-brand-black/90', 'backdrop-blur-lg', 'border-white/10');
+                header.classList.remove('py-4', 'border-transparent');
+                header.classList.add('py-2');
+            } else {
+                header.classList.remove('bg-brand-black/90', 'backdrop-blur-lg', 'border-white/10', 'py-2');
+                header.classList.add('py-4', 'border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('mobile-menu-close'); // TAREFA 1 (V5)
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        const toggleMenu = () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                menu.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.classList.add('no-scroll'); // Bloqueia fundo
+            } else {
+                menu.classList.add('opacity-0', 'pointer-events-none');
+                menu.classList.remove('opacity-100', 'pointer-events-auto');
+                document.body.classList.remove('no-scroll'); // Libera fundo
+            }
+        };
+
+        btn.addEventListener('click', toggleMenu);
+        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // GSAP Animations Registration
+        gsap.registerPlugin(ScrollTrigger);
+
+        // TAREFA 4: Lógica do Cursor Customizado e Adaptativo (Apenas Desktop > 1024px)
+        if (window.innerWidth > 1024) {
+            const dot = document.getElementById('custom-cursor-dot');
+            const ring = document.getElementById('custom-cursor-ring');
+            
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+            
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                dot.style.left = mouseX + 'px';
+                dot.style.top = mouseY + 'px';
+            });
+            
+            // Suavização do anel perseguindo o ponto central
+            const renderCursor = () => {
+                ringX += (mouseX - ringX) * 0.2;
+                ringY += (mouseY - ringY) * 0.2;
+                ring.style.left = ringX + 'px';
+                ring.style.top = ringY + 'px';
+                requestAnimationFrame(renderCursor);
+            };
+            requestAnimationFrame(renderCursor);
+            
+            // Eventos para expandir no hover
+            const addHoverEvents = () => {
+                const interactables = document.querySelectorAll('a, button, input, textarea, select, .cursor-pointer, .service-card, .glass-panel');
+                interactables.forEach(el => {
+                    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+                });
+            };
+            addHoverEvents();
+        }
+
+        // TAREFA 2: Lógica de rastreio de rolagem para os dots do Carrossel de Depoimentos Mobile
+        const track = document.getElementById('testimonials-track');
+        const dots = document.querySelectorAll('.dot-indicator');
+        
+        if (track && dots.length > 0) {
+            track.addEventListener('scroll', () => {
+                const scrollLeft = track.scrollLeft;
+                const cardWidth = track.clientWidth;
+                // Calcula o slide ativo baseando-se na porcentagem de rolagem
+                const activeIndex = Math.round(scrollLeft / cardWidth);
+                
+                dots.forEach((dot, index) => {
+                    if (index === activeIndex) {
+                        dot.classList.add('active', 'bg-brand-magenta');
+                        dot.classList.remove('bg-brand-gray/30');
+                    } else {
+                        dot.classList.remove('active', 'bg-brand-magenta');
+                        dot.classList.add('bg-brand-gray/30');
+                    }
+                });
+            });
+        }
+
+        // TAREFA 7: Efeito Parallax e Efeito Líquido Interativo (Hero Section)
+        const parallaxBg = document.getElementById('hero-bg-parallax');
+        const canvas = document.getElementById('liquid-canvas');
+        
+        // 7A: Scroll Parallax
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < window.innerHeight && parallaxBg) {
+                // Background se move 40% da velocidade da rolagem
+                parallaxBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+            }
+        });
+
+        // 7B: Simulação Canvas 2D Efeito Líquido/Ondulação
+        if (canvas && window.innerWidth > 1024) { // Evita sobrecarga no touch/mobile
+            const ctx = canvas.getContext('2d');
+            let ripples = [];
+            
+            const resizeCanvas = () => {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            };
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            window.addEventListener('mousemove', (e) => {
+                // Apenas gera ondas se estivermos vendo a Hero Section
+                if (window.scrollY < window.innerHeight) {
+                    ripples.push({
+                        x: e.clientX,
+                        // Compensa a posição do clique subtraindo o valor do parallax
+                        y: e.clientY - (window.scrollY * 0.4), 
+                        radius: 5,
+                        alpha: 0.6
+                    });
+                }
+            });
+            
+            const drawRipples = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < ripples.length; i++) {
+                    const r = ripples[i];
+                    ctx.beginPath();
+                    ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+                    
+                    // Gradiente que cria o aspecto de "fluído brilhante"
+                    const gradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
+                    gradient.addColorStop(0, `rgba(255, 0, 102, ${r.alpha})`); // Magenta Doca
+                    gradient.addColorStop(1, 'rgba(255, 0, 102, 0)');
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                    
+                    // Crescimento líquido da onda e desvanecimento
+                    r.radius += 2.5;
+                    r.alpha -= 0.012;
+                }
+                
+                // Limpa arrays mortas para salvar RAM
+                ripples = ripples.filter(r => r.alpha > 0);
+                requestAnimationFrame(drawRipples);
+            };
+            drawRipples();
+        }
+
+        // Utility function to check if reduced motion is preferred
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            // Animate Elements UP
+            gsap.utils.toArray('.reveal-up').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%", // Trigger when top of element hits 85% of viewport
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+
+            // Animate Elements Left/Right
+            gsap.utils.toArray('.reveal-left').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                    },
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            gsap.utils.toArray('.reveal-right').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                    },
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Animate Scale for Portfolio Items
+            gsap.utils.toArray('.reveal-scale').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 90%",
+                    },
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                });
+            });
+        } else {
+            // Fallback for reduced motion
+            document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
